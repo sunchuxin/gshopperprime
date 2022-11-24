@@ -63,7 +63,7 @@ function HomepageContent() {
       )}
       <ProductSwimlane
         data={featuredProducts.nodes}
-        title="Featured Products"
+        title="Recommendation"
         divider="bottom"
       />
       {secondaryHero && <Hero {...secondaryHero} />}

@@ -1,5 +1,14 @@
-import {Link, useUrl, useCart} from '@shopify/hydrogen';
+import {Link, useUrl, useCart,Image} from '@shopify/hydrogen';
 import {useWindowScroll} from 'react-use';
+import logoImg from '~/assets/header/logo.png';
+import aboutImg from '~/assets/header/about.png';
+import cartImg from '~/assets/header/cart.png';
+import dropDownImg from '~/assets/header/dropDown.png';
+import helpCenterImg from '~/assets/header/helpCenter.png';
+import ordersImg from '~/assets/header/orders.png';
+import userImg from '~/assets/header/user.png';
+import '../../styles/header.css';
+
 
 import {
   Heading,
@@ -37,6 +46,9 @@ export function Header({title, menu}) {
     closeDrawer: closeMenu,
   } = useDrawer();
 
+
+
+
   return (
     <>
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
@@ -73,6 +85,8 @@ function MobileHeader({countryCode, title, isHome, openCart, openMenu}) {
     }flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`,
   };
 
+
+
   return (
     <header role="banner" className={styles.container}>
       <div className="flex items-center justify-start w-full gap-4">
@@ -81,20 +95,20 @@ function MobileHeader({countryCode, title, isHome, openCart, openMenu}) {
         </button>
         <form
           action={`/${countryCode ? countryCode + '/' : ''}search`}
-          className="items-center gap-2 sm:flex"
+          className="items-center gap-2 sm:flex header-search"
         >
-          <button type="submit" className={styles.button}>
+          <button type="submit" className={`${styles.button} header-search-btn`}>
             <IconSearch />
           </button>
           <Input
             className={
-              isHome
+              `${isHome
                 ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
+                : 'focus:border-primary/20'} header-search-input`
             }
             type="search"
             variant="minisearch"
-            placeholder="Search"
+            placeholder="Search Gshopper"
             name="q"
           />
         </form>
@@ -137,49 +151,97 @@ function DesktopHeader({countryCode, isHome, menu, openCart, title}) {
     }hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`,
   };
 
+
   return (
-    <header role="banner" className={styles.container}>
-      <div className="flex gap-12">
-        <Link className={`font-bold`} to="/">
-          {title}
+    <header role="banner" className={`header-wrap`}>
+      <div className='header-top'>
+        <Link to="/" className='header-top-item'>
+            <Image
+              src={helpCenterImg}
+              width={16}
+              height={16}
+            />
+          <span>Help Center</span>
         </Link>
-        <nav className="flex gap-8">
-          {/* Top level menu items */}
-          {(menu?.items || []).map((item) => (
-            <Link key={item.id} to={item.to} target={item.target}>
-              {item.title}
+        <Link to="/" className='header-top-item'>
+            <Image
+              src={aboutImg}
+              width={16}
+              height={16}
+            />
+          <span>About Gshopper Prime</span>
+        </Link>
+      </div>
+      <div className='header-bottom'>
+        <div className="flex gap-12">
+          <Link className={`font-bold`} to="/">
+              {/* {title} */}
+              <Image
+                alt="Logo"
+                src={logoImg}
+                width={375}
+                height={54}
+              />
             </Link>
-          ))}
-        </nav>
-      </div>
-      <div className="flex items-center gap-1">
-        <form
-          action={`/${countryCode ? countryCode + '/' : ''}search`}
-          className="flex items-center gap-2"
-        >
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
-          <button type="submit" className={styles.button}>
-            <IconSearch />
+            {/* <nav className="flex gap-8">
+              {(menu?.items || []).map((item) => (
+                <Link key={item.id} to={item.to} target={item.target}>
+                  {item.title}
+                </Link>
+              ))}
+            </nav> */}
+        </div>
+        <div className="flex items-center gap-1">
+          <form
+              action={`/${countryCode ? countryCode + '/' : ''}search`}
+              className="flex items-center gap-2 header-search"
+            >
+              <Input
+                className={
+                  `${isHome
+                    ? 'focus:border-contrast/20 dark:focus:border-primary/20'
+                    : 'focus:border-primary/20'} header-search-input`
+                }
+                type="search"
+                variant="minisearch"
+                placeholder="Search Gshopper"
+                name="q"
+              />
+              <button type="submit" className={`${styles.button} header-search-btn`}>
+                <IconSearch />
+              </button>
+            </form>
+        </div>
+        <div className="flex items-center gap-1">
+          <Link to={'/account'} className="header-search-icon">
+            <Image
+              src={userImg}
+              width={24}
+              height={24}
+            />
+            <span>Hi,</span>
+          </Link>
+          <Link to="/" className="header-search-icon">
+            <Image
+              src={ordersImg}
+              width={24}
+              height={24}
+            />
+            <span>Orders</span>
+          </Link>
+          <button onClick={openCart} className="header-search-icon">
+            {/* <IconBag /> */}
+            <Image
+              src={cartImg}
+              width={24}
+              height={24}
+            />
+            <CartBadge dark={isHome} />
+            <span>Cart</span>
           </button>
-        </form>
-        <Link to={'/account'} className={styles.button}>
-          <IconAccount />
-        </Link>
-        <button onClick={openCart} className={styles.button}>
-          <IconBag />
-          <CartBadge dark={isHome} />
-        </button>
+        </div>
       </div>
+
     </header>
   );
 }

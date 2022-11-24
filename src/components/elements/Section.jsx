@@ -46,7 +46,6 @@ export function Section({
       {heading && (
         <Heading size="lead" className={padding === 'y' ? paddings['x'] : ''}>
           {heading}
-          <Stamp/>
         </Heading>
       )}
       {children}

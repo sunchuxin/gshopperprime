@@ -16,9 +16,8 @@ export function Hero({
   return (
     <Link to={`/collections/${handle}`}>
       <section
-        className={`relative justify-end flex flex-col w-full ${
-          top && '-mt-nav'
-        } ${
+        className={`relative justify-end flex flex-col w-full 
+        ${
           height === 'full'
             ? 'h-screen'
             : 'aspect-[4/5] sm:aspect-square md:aspect-[5/4] lg:aspect-[3/2] xl:aspect-[2/1]'
@@ -56,7 +55,7 @@ export function Hero({
             </div>
           )}
         </div>
-        <div className="flex flex-col items-baseline justify-between gap-4 px-6 py-8 sm:px-8 md:px-12 bg-gradient-to-t dark:from-contrast/60 dark:text-primary from-primary/60 text-contrast">
+        {/* <div className="flex flex-col items-baseline justify-between gap-4 px-6 py-8 sm:px-8 md:px-12 bg-gradient-to-t dark:from-contrast/60 dark:text-primary from-primary/60 text-contrast">
           {heading?.value && (
             <Heading format as="h2" size="display" className="max-w-md">
               {heading.value}
@@ -68,7 +67,7 @@ export function Hero({
             </Text>
           )}
           {cta?.value && <Text size="lead">{cta.value}</Text>}
-        </div>
+        </div> */}
       </section>
     </Link>
   );
