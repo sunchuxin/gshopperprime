@@ -1,0 +1,12 @@
+.product-list-wrap{
+    display: flex;
+}
+.product-item-wrap{
+    width: calc((100% - 1px)/6);
+    padding: 0 8px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+.product-item{
+    width: 100%;
+}

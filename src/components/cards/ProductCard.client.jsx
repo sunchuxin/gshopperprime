@@ -10,6 +10,8 @@ import {
 import {Text} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
+import '../../styles/home.css';
+
 
 export function ProductCard({product, label, className, loading, onClick}) {
   let cardLabel;
@@ -33,8 +35,8 @@ export function ProductCard({product, label, className, loading, onClick}) {
   const styles = clsx('grid gap-6', className);
 
   return (
-    <Link onClick={onClick} to={`/products/${product.handle}`}>
-      <div className={styles}>
+    <Link className='product-item-wrap' onClick={onClick} to={`/products/${product.handle}`}>
+      <div className={`${styles} product-item`}>
         <div className="card-image aspect-[4/5] bg-primary/5">
           <Text
             as="label"
