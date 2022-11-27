@@ -2,7 +2,7 @@
 /* Tailwind Configuration Docs: https://tailwindcss.com/docs/configuration */
 
 function withOpacityValue(variable) {
-  return ({opacityValue}) => {
+  return ({ opacityValue }) => {
     if (opacityValue === undefined) {
       return `rgb(var(${variable}))`;
     }
@@ -19,6 +19,10 @@ module.exports = {
         contrast: withOpacityValue('--color-contrast'),
         notice: withOpacityValue('--color-accent'),
         shopPay: 'var(--color-shop-pay)',
+        plain: '#FF5224',
+        grey9: '#999999',
+        grey6: '#666666',
+        grey3: '#333333',
       },
       screens: {
         sm: '32em',
@@ -26,12 +30,12 @@ module.exports = {
         lg: '64em',
         xl: '80em',
         '2xl': '96em',
-        'sm-max': {max: '48em'},
-        'sm-only': {min: '32em', max: '48em'},
-        'md-only': {min: '48em', max: '64em'},
-        'lg-only': {min: '64em', max: '80em'},
-        'xl-only': {min: '80em', max: '96em'},
-        '2xl-only': {min: '96em'},
+        'sm-max': { max: '48em' },
+        'sm-only': { min: '32em', max: '48em' },
+        'md-only': { min: '48em', max: '64em' },
+        'lg-only': { min: '64em', max: '80em' },
+        'xl-only': { min: '80em', max: '96em' },
+        '2xl-only': { min: '96em' },
       },
       spacing: {
         nav: 'var(--height-nav)',
@@ -42,13 +46,21 @@ module.exports = {
         'screen-no-nav':
           'calc(var(--screen-height, 100vh) - var(--height-nav))',
         'screen-dynamic': 'var(--screen-height-dynamic, 100vh)',
+        'login-height': '504px',
       },
       width: {
         mobileGallery: 'calc(100vw - 3rem)',
+        'login-width': '588px',
+        'login-form': '448px',
       },
       fontFamily: {
         sans: ['Helvetica Neue', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         serif: ['"IBMPlexSerif"', 'Palatino', 'ui-serif'],
+        'login-title': ['PingFangSC-Medium', 'PingFang SC'],
+      },
+      color: {
+        'login-title': '#232323',
+        'login-account': '#333333',
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],
@@ -65,6 +77,26 @@ module.exports = {
         border: 'inset 0px 0px 0px 1px rgb(var(--color-primary) / 0.08)',
         darkHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.4)',
         lightHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.05)',
+        'login-form': '0px 2px 9px 0px rgb(0 0 0 / 3%)',
+      },
+      backgroundSize: {
+        'login-size': '588px 606px',
+      },
+      backgroundImage: {
+        'login-image': 'url("~/assets/login/icon-spirit-login.png")',
+      },
+      backgroundPosition: {
+        'login-position': '0 -102px',
+      },
+      backgroundColor: {
+        'btn-primary-color': '#FF5224',
+        'btn-plain-color': '#FFF',
+      },
+      border: {
+        'btn-color': '1px solid #FF5224',
+      },
+      borderWidth: {
+        one: '1px',
       },
     },
   },
